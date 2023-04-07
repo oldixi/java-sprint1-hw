@@ -1,4 +1,3 @@
-// Сохранение и изменение количества шагов, вывод статистики
 import java.util.Scanner;
 class StepTracker {
     Scanner scanner;
@@ -6,7 +5,6 @@ class StepTracker {
     int goalByStepsPerDay = 10000;
     Converter conv = new Converter();
 
-    //конструктор
     StepTracker (Scanner scannerStepGoal) {
         scanner = scannerStepGoal;
         for (int i = 0; i < monthToData.length; i++) {
@@ -14,7 +12,6 @@ class StepTracker {
         }
     }
 
-    //сохранение количества шагов
     void addNewNumberStepsPerDay() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите номер месяца");
@@ -42,7 +39,6 @@ class StepTracker {
         monthData.days[dayNum-1] = stepCnt; //запишим количество шагов в нужный элемент массива days объекта monthData
     }
 
-    //изменение целевого количества шагов
     void changeStepGoal() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите целевое количество шагов в день.");
@@ -55,7 +51,6 @@ class StepTracker {
         }
     }
 
-    //вывод статистики за месяц
     void printStatistic() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите номер месяца для вывода статистики");
@@ -68,7 +63,7 @@ class StepTracker {
         MonthData monthData = monthToData[monthNum-1];
         int stepCntSum = monthData.sumStepsFromMonth();
 
-        System.out.println("Количество пройденных шагов по дням.");
+        System.out.println("Количество пройденных шагов по дням за " + getMonthName(monthNum) + ".");
         monthData.printDaysAndStepsFromMonth();
         System.out.println("Общее количество шагов за месяц: " + stepCntSum);
         System.out.println("Максимальное пройденное количество шагов в месяце: " + monthData.maxSteps());
@@ -77,5 +72,10 @@ class StepTracker {
         System.out.println("Количество сожжённых килокалорий: " + conv.convertStepsToKilocalories(stepCntSum));
         System.out.println("Лучшая серия: " + monthData.bestSeries(goalByStepsPerDay));
         System.out.println();
+    }
+
+    String getMonthName(int monthNum) {
+        String[] monthName = {"январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"};
+        return monthName[monthNum-1];
     }
 }

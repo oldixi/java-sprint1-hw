@@ -1,15 +1,12 @@
-//хранение и статистика за месяц
 class MonthData {
     int[] days = new int[30];
 
-    //Вывод элементов массива days
     void printDaysAndStepsFromMonth() {
         for (int i = 0; i < days.length; i++) {
             System.out.println((i+1) + " день: " + days[i]);
         }
     }
 
-    //Сумма шагов за месяц
     int sumStepsFromMonth() {
         int stepCntSum = 0;
         for (int i: days) {
@@ -18,7 +15,6 @@ class MonthData {
         return stepCntSum;
     }
 
-    //Максимальное количество шагов в месяц
     int maxSteps() {
         int stepCntMax = 0;
         for (int i: days) {
@@ -29,7 +25,6 @@ class MonthData {
         return stepCntMax;
     }
 
-    //Лучшая серия шагов
     int bestSeries(int goalByStepsPerDay) {
         int currentSeries = 0;
         int finalSeries = 0;

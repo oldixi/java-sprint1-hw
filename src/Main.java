@@ -1,4 +1,3 @@
-//Меню и запуск
 import java.util.Scanner;
 
 class Main {
@@ -19,8 +18,7 @@ class Main {
                 stepTracker.printStatistic();
             } else if (command == 0) {
                 System.out.println("Выход");
-                scanner.close();
-                return;
+                System.exit(0);
             } else {
                 System.out.println("Данная команда не поддерживается");
             }
